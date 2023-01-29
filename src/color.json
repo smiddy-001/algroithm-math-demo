@@ -1,15 +1,15 @@
 [
     {
         "name": "background-header",
-        "hex": "1C0C13"
+        "hex": "0c0c0f"
     },
     {
         "name": "background-main",
-        "hex": "252B29"
+        "hex": "12121a"
     },
     {
         "name": "background-secondary",
-        "hex": "434943"
+        "hex": "191924"
     },
     {
         "name": "foreground",

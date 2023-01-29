@@ -1,8 +1,11 @@
 :root {
-  --background-header: #f00;
-  --background-main: #0f0;
-  --background-secondary: #00f;
-  --foreground: #ff0;
+
+    /* color stuff */
+
+  --background-header: rgb(27, 24, 24);
+  --background-main: rgb(14, 17, 14);
+  --background-secondary: rgb(24, 24, 29);
+  --foreground: rgb(228, 228, 222);
   --impact: #0ff;
   --impact-secondary: #f0f;
   --negative: #c00;
@@ -14,19 +17,35 @@
   --tt4: #00d;
   --tt5: #d00;
   --tt6: #ddd;
+
+    /* sizing stuff */
+
+  --header-height: 4rem;
+  --tab-width: 20rem;
+  --header-horizontal-spacing: 0.5rem;
 }
+
+/* roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
 .App {
   text-align: center;
 }
+
+body {
+  font-family: 'icon-font', 'Roboto', sans-serif;
+  font-size: 16px;
+  color: var(--foreground);
+}
+
 #grid-container {
 
   width: 100vw;
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 16rem auto;
-  grid-template-rows: 3rem auto;
+  grid-template-columns: var(--tab-width) auto;
+  grid-template-rows: var(--header-height) auto;
 }
 #tabs-container {
   grid-column: 1;
@@ -37,6 +56,37 @@
   grid-column: 1;
   grid-row: 1;
   background-color: var(--background-main);
+
+  display: flex;
+  justify-content: space-between;
+  padding: var(--header-horizontal-spacing);
+  align-items: center;
+}
+#tabs-header-container input, select{
+  background-color: var(--background-header);
+  color: var(--foreground);
+  /* padding: var(--header-horizontal-spacing); */
+  height: 100%;
+  width: 100%;
+  margin: 0 calc(var(--header-horizontal-spacing) / 1);
+  border: 0;
+  padding-left: calc(var(--header-horizontal-spacing) * 2);
+  /* padding: 0.5rem; */
+}
+#tabs-header-container input {
+  width: 10rem;
+}
+/* select {
+  background-color: var(--background-header);
+  color: var(--foreground);
+  border: 0;
+} */
+#tabs-header-container input:focus {
+  outline: none;
+  /* border: 24px solid peru; */
+}
+button:hover {
+  cursor: pointer;
 }
 #header-container {
   grid-column: 2;
@@ -45,12 +95,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 28px;
+  padding: 0 var(--header-horizontal-spacing);
 }
 #body-container {
   grid-column: 2;
   grid-row: 2;
   background-color: var(--background-main);
+}
+button {
+    /* padding: 0 1rem; */
+    margin: var(--header-horizontal-spacing);
+    border: 0;
+    background-color: var(--background-header);
+    color: var(--foreground);
+    font-size: 1.5rem;
 }
 
      /* <div id="tabs-container">t1</div><div id="tabs-header-container">t2</div><div id="header-container">h</div><div id="body-container">body</div> */
