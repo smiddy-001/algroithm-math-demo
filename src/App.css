@@ -1,10 +1,10 @@
 :root {
+  /* color stuff */
 
-    /* color stuff */
-
-  --background-header: rgb(27, 24, 24);
-  --background-main: rgb(14, 17, 14);
-  --background-secondary: rgb(24, 24, 29);
+  --background-black: rgb(27, 24, 24);
+  --background-darkest: rgb(14, 17, 14);
+  --background-dark: rgb(24, 24, 29);
+  --background: rgb(46, 46, 51);
   --foreground: rgb(228, 228, 222);
   --impact: #0ff;
   --impact-secondary: #f0f;
@@ -18,28 +18,37 @@
   --tt5: #d00;
   --tt6: #ddd;
 
-    /* sizing stuff */
+  /* what goes where stuff */
+  /* unfinished */
+
+  /* --button-bg
+  --button-press-bg
+  --input-bg
+  --input-focus-bg */
+
+  /* sizing stuff */
 
   --header-height: 4rem;
   --tab-width: 20rem;
   --header-horizontal-spacing: 0.5rem;
+  --border-thickness: 4px;
+  --input-border: var(--border-thickness) solid;
 }
 
 /* roboto font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 
 .App {
   text-align: center;
 }
 
 body {
-  font-family: 'icon-font', 'Roboto', sans-serif;
+  font-family: "icon-font", "Roboto", sans-serif;
   font-size: 16px;
   color: var(--foreground);
 }
 
 #grid-container {
-
   width: 100vw;
   height: 100vh;
 
@@ -50,48 +59,72 @@ body {
 #tabs-container {
   grid-column: 1;
   grid-row: 2;
-  background-color: var(--background-secondary);
+  background-color: var(--background-dark);
 }
 #tabs-header-container {
   grid-column: 1;
   grid-row: 1;
-  background-color: var(--background-main);
+  background-color: var(--background-darkest);
+  padding: 0;
 
   display: flex;
   justify-content: space-between;
-  padding: var(--header-horizontal-spacing);
+  /* padding: var(--header-horizontal-spacing); */
   align-items: center;
 }
-#tabs-header-container input, select{
-  background-color: var(--background-header);
+#tabs-header-container input,
+select {
+  background-color: var(--background-black);
   color: var(--foreground);
   /* padding: var(--header-horizontal-spacing); */
   height: 100%;
   width: 100%;
-  margin: 0 calc(var(--header-horizontal-spacing) / 1);
+  /* margin: 0 calc(var(--header-horizontal-spacing) / 1); */
   border: 0;
-  padding-left: calc(var(--header-horizontal-spacing) * 2);
+  /* padding-left: calc(var(--header-horizontal-spacing) * 2); */
   /* padding: 0.5rem; */
 }
-#tabs-header-container input {
-  width: 10rem;
+#tabs-header-container input,
+select {
+  background-color: #00d;
 }
-/* select {
-  background-color: var(--background-header);
-  color: var(--foreground);
-  border: 0;
-} */
-#tabs-header-container input:focus {
+
+#tabs-header-container input:focus,
+select:focus {
   outline: none;
-  /* border: 24px solid peru; */
+  /* border: var(--input-border) #212121; */
 }
+
+#tab-item {
+  padding: var(--header-horizontal-spacing)
+    calc(var(--header-horizontal-spacing) * 2);
+  width: auto;
+  height: 4rem;
+
+  border-bottom: var(--border-thickness) solid var(--background-darkest);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#circle-bg {
+  background-color: var(--background-darkest);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button:hover {
   cursor: pointer;
 }
 #header-container {
   grid-column: 2;
   grid-row: 1;
-  background-color: var(--background-header);
+  background-color: var(--background-black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,15 +133,19 @@ button:hover {
 #body-container {
   grid-column: 2;
   grid-row: 2;
-  background-color: var(--background-main);
+  background-color: var(--background-darkest);
 }
 button {
-    /* padding: 0 1rem; */
-    margin: var(--header-horizontal-spacing);
-    border: 0;
-    background-color: var(--background-header);
-    color: var(--foreground);
-    font-size: 1.5rem;
+  /* padding: 0 1rem; */
+  margin: var(--header-horizontal-spacing);
+  border: 0;
+  padding: 1rem;
+  margin: 0;
+  background-color: var(--background-black);
+  color: var(--foreground);
 }
-
-     /* <div id="tabs-container">t1</div><div id="tabs-header-container">t2</div><div id="header-container">h</div><div id="body-container">body</div> */
+svg {
+  font-size: 1.5rem;
+  fill: var(--foreground);
+}
+/* <div id="tabs-container">t1</div><div id="tabs-header-container">t2</div><div id="header-container">h</div><div id="body-container">body</div> */
