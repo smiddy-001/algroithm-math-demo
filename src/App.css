@@ -1,38 +1,56 @@
+:root {
+  --background-header: #f00;
+  --background-main: #0f0;
+  --background-secondary: #00f;
+  --foreground: #ff0;
+  --impact: #0ff;
+  --impact-secondary: #f0f;
+  --negative: #c00;
+  --neutral: #cc0;
+  --positive: #0c0;
+  --tt1: #dd0;
+  --tt2: #0d0;
+  --tt3: #0dd;
+  --tt4: #00d;
+  --tt5: #d00;
+  --tt6: #ddd;
+}
+
 .App {
   text-align: center;
 }
+#grid-container {
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 16rem auto;
+  grid-template-rows: 3rem auto;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#tabs-container {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: var(--background-secondary);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#tabs-header-container {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--background-main);
+}
+#header-container {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: var(--background-header);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 28px;
+}
+#body-container {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: var(--background-main);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+     /* <div id="tabs-container">t1</div><div id="tabs-header-container">t2</div><div id="header-container">h</div><div id="body-container">body</div> */

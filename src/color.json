@@ -1,0 +1,62 @@
+[
+    {
+        "name": "background-header",
+        "hex": "1C0C13"
+    },
+    {
+        "name": "background-main",
+        "hex": "252B29"
+    },
+    {
+        "name": "background-secondary",
+        "hex": "434943"
+    },
+    {
+        "name": "foreground",
+        "hex": "E5D2CE"
+    },
+    {
+        "name": "impact",
+        "hex": "3BBBAE"
+    },
+    {
+        "name": "impact-secondary",
+        "hex": "91D4C3"
+    },
+    {
+        "name": "negative",
+        "hex": "E15334"
+    },
+    {
+        "name": "neutral",
+        "hex": "E8C558"
+    },
+    {
+        "name": "positive",
+        "hex": "8FD14F"
+    },
+    {
+        "name": "tt1",
+        "hex": "81a2be"
+    },
+    {
+        "name": "tt2",
+        "hex": "8abeb7"
+    },
+    {
+        "name": "tt3",
+        "hex": "9ac04d"
+    },
+    {
+        "name": "tt4",
+        "hex": "b294bb"
+    },
+    {
+        "name": "tt5",
+        "hex": "df6565"
+    },
+    {
+        "name": "tt6",
+        "hex": "eaac33"
+    }
+]
