@@ -1,28 +1,34 @@
-// import logo from './logo.svg';
-import './App.css';
+// import logo from "./logo.svg";
+import "./App.css";
 import { BiImport } from "react-icons/bi";
 import { BiExport } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { BiCaretLeft } from "react-icons/bi";
 import { BiCaretDown } from "react-icons/bi";
+import { BiFile } from "react-icons/bi";
+import { BiFolder } from "react-icons/bi";
+import { BiFolderOpen } from "react-icons/bi";
 
+// STATE???
+// import state from { React }
+import React, { useState } from 'react';
 
 // imports the content from the file...
 
 // Uses react-latex (search npm for documentatioin)
-var Latex = require('react-latex');
+var Latex = require("react-latex");
 
-// import Color from './color.json';
-const colors = require('./color.json');
-const content = require('./content/content.json')
+// import Color from "./color.json";
+const colors = require("./color.json");
+const content = require("./content.json")
 
 // Rips the colors from the json and applies to css respectively
-var root = document.querySelector(':root');
+var root = document.querySelector(":root");
 
 for (let i=0; i < colors.length; i++) {
   // Scans through css and sets up the css variables
-  root.style.setProperty('--'+colors[i].name, '#'+colors[i].hex)
+  root.style.setProperty("--"+colors[i].name, "#"+colors[i].hex)
 }
 
 // Useful ones ...
@@ -50,33 +56,51 @@ for (let i=0; i < colors.length; i++) {
 // BiFontSize
 // BiSortAZ
 
-
 // console.log(colors[0].hex);
 // console.log(colors.length)
 // console.log(colors[0].hex)
 
-
 function TabContainer(props) {
+  // state
+  const [isOpen, setisOpen] = useState(false);
+
+  // const childrenas = props.children
+
+  // console.log(childrenas)
   return (
-    <div id="tab-item" style={{color:(props.text !== '' ? (''):('blue'))}}>
-      <div id='circle-bg'>2</div>
-      <div>{props.text}{props.text !== '' ? '' : 'EMPTY FIELD FIX NOW'}</div>
-      <div><BiCaretDown/></div>
+    <div className="tab-together-item"> 
+      <div className={(props.children) ? ('tab-item') : ('tab-item is-child')} onClick={(isOpen) ? (() => setisOpen(false)) : (() => setisOpen(true))} style={{cursor:'pointer'}}>
+        <div className="circle-bg">{(props.children) ? ((isOpen) ? <BiFolderOpen/> : <BiFolder/>) : <BiFile/>}</div>
+        <div>{props.text}</div>
+        <div className={(isOpen) ? 'open':''}>{(props.children) ? <BiCaretDown/> : <div/>}</div>
+      </div>
+      <div className="child" style={(isOpen) ? {} : {display:'none'}}>
+        {props.children}
+      </div>
     </div>
   )
 }
 
+// function lenOfItem(n){
+//   return Object.keys(content[n]).length;
+// }
+
 function populateTabContainer(){
-  // return 
-  const rows = [];
-  console.log(content.algorithms.name)
-    for (let i=0; i<content.length; i++){
-      // console.log(content)
-      console.log('./content/' + content[i]+ '/' + '.tex')
-      // rows.push(<TabContainer text={content[i].name}/>);
-    }
-    return(rows)
-  // )
+//   // return 
+//   const rows = [];
+//   console.log(content.algorithms.name);
+//   console.log(lenOfItem)
+
+//   let lenOfList = Object.keys(content).length;
+//   // let allNamesInList = content.map(object => object.name)
+
+//   for (let i=0;i<lenOfList;i++){
+//     for (let v=0;v<lenOfItem(i);v++){
+//       console.log(i + "-" + v)
+//   }
+//     // console.log(i)
+//   }
+//     // return(tReturn)
 }
 
 function importAll(r) {
@@ -86,36 +110,33 @@ function importAll(r) {
 }
 
 function setupFS() {
-  // get files in content folder
+  // Turn this ...
 
-  // create json file that follows the convention:
+  // {
+  //   "algorithms": {
+  //       "Brute Force algorithm": [
+  //           "linear Search"
+  //       ],
+  //       "Greedy algorithm": {
+  //             "types": {
+  //               "hello",
+  //               "incagagoa"
+  //             }
+  //             "other-other-types": {
+  //               "bla",
+  //               "blabal"
+  //             }
+  //           }
+  //       },
+  //      ... (this goes on)
 
-  // [
-  //   algorithms[
-  //     {
-  //       "name"  : "example",
-  //       "tag" : "example testing"
-  //      }
-  //   maths[
-  //     {
-  //       "name"  : "calculus",
-  //       "tag" : "differencial integration"
-  //     },
-  //     {
-  //       "name"  : "bla",
-  //       "tag" : "bla testing"
-  //     }
-  //   physics[
-  //     {
-  //       "name"  : "bla",
-  //       "tag" : "bla testing"
-  //     },
-  //     {
-  //       "name"  : "bla",
-  //       "tag" : "bla testing"
-  //     }
-  //   ]
-  // ]
+  // Into this ...
+
+  // FOLDERS = ["algorithms", "algorithms/brute-force-algorithm", "algorithms/Greedy-algorithm", "algorithms/greedy-algorithm/types", "algorithms/Greedy-algorithm/types/other-types", "algorithms/Greedy-algorithm/types/other-types-types"]
+  // FILES   = ["algorithms/linear-search.tex", "algorithms/greedy-algorithm/types/hello.tex", "algorithms/greedy-algorithm/types/incagagoa.tex"]
+  // NUMBER_OF_FILES_IN_FOLDER = [["algorithms",5], ["algorithms/brute-force-algorithm",1], ["algorithms/Greedy-algorithm", 4]]
+
+  // look for parents that are also objects, turn into a list of folders, and break those folders into an order, [first], [first/second] so that we dont run into an error if we just did [first/second]
 }
 
 function App() {
@@ -123,10 +144,35 @@ function App() {
     <div className="App">
       <div id="grid-container">
         <div id="tabs-container">
-          {populateTabContainer()}
+          {/* {populateTabContainer()} */}
+          <TabContainer text="algorithms" children={
+            <div>
+            <TabContainer text="brute force" children={
+              <div>
+              <TabContainer text="simple brute force"/>
+              <TabContainer text="memorisation"/>
+              <TabContainer text="simple linear"/>
+              <TabContainer text="brute force" children={
+              <div>
+              <TabContainer text="simple brute force"/>
+              <TabContainer text="memorisation"/>
+              <TabContainer text="simple linear"/>
+              </div>
+            }/>
+              </div>
+            }/>
+            <TabContainer text="memorisation"/>
+            <TabContainer text="simple linear"/>
+            </div>
+          }/> 
+          <TabContainer text="maths" children={
+            <div>
+            <TabContainer text="calculus"/>
+            </div>
+          }/> 
         </div>
-        <div id="tabs-header-container">
-            <select id="cars" name="cars">
+        <div className="tabs-header-container">
+            <select className="cars" name="cars">
               <option value="mth">Maths</option>
               <option value="alg">Algorithms</option>
               <option value="phx">Physics</option>
@@ -134,10 +180,10 @@ function App() {
           <input type="search" name="search" placeholder="search" />
         </div>
         <div id="header-container">
-          <div id="left-align">
+          <div className="left-align">
         <button><BiCaretLeft/></button>
           </div>
-          <div id="right-align">
+          <div className="right-align">
             <button><BiRefresh/></button>
             <button><BiImport/></button>
             <button><BiExport/></button>
@@ -146,7 +192,8 @@ function App() {
         </div>
         <div id="body-container">
           <Latex>
-            What is $(3\times 4) \div (5-3)$
+            {/* example LaTex file that would be here if shit was working \n\n $(51*414) */}
+            LaTex allows the use of mathematical symbols such as: $51 \div 4 + 5\times3$
           </Latex>
         </div>
       </div>

@@ -1,27 +1,31 @@
 [
     {
-        "name": "background-header",
-        "hex": "43b732"
+        "name": "background",
+        "hex": "54546d"
     },
     {
-        "name": "background-main",
-        "hex": "111010"
+        "name": "background-dark",
+        "hex": "363646"
     },
     {
-        "name": "background-secondary",
-        "hex": "060606"
+        "name": "background-darkest",
+        "hex": "2a2a37"
+    },
+    {
+        "name": "background-black",
+        "hex": "1e1f28"
     },
     {
         "name": "foreground",
-        "hex": "E5D2CE"
+        "hex": "dcd7ba"
     },
     {
         "name": "impact",
-        "hex": "3BBBAE"
+        "hex": "ff5d62"
     },
     {
         "name": "impact-secondary",
-        "hex": "91D4C3"
+        "hex": "e82424"
     },
     {
         "name": "negative",

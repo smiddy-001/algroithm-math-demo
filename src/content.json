@@ -1,0 +1,83 @@
+{
+    "algorithms": {
+        "Brute Force algorithm": [
+            "linear Search"
+        ],
+        "Greedy algorithm": [
+            "selection sort",
+            "topological sort",
+            "Prim’s & Kruskal’s algorithms",
+            "Coin Change problem",
+            "Fractional Knapsack Problem",
+            "Job Scheduling algorithm"
+        ],
+        "Recursive algorithm": [
+            "Time Complexity",
+            "simple algorithm"
+        ],
+        "Backtracking algorithm": [
+            "Generating all Binary strings",
+            "N-Queens Problem",
+            "Knapsack Problem",
+            "Graph coloring Problem"
+        ],
+        "Divide & Conquer algorithm": [
+            "Binary Search",
+            "Merge Sort & Quick Sort",
+            "Median Finding",
+            "Matrix Multiplication"
+        ],
+        "Dynamic programming algorithm": [
+            "Longest Common Subsequence",
+            "Bellman-Ford algorithm",
+            "Chain Matrix multiplication",
+            "Subset Sum",
+            "Knapsack Problem",
+            "Fibonacci"
+        ],
+        "Randomized algorithm": [
+            "Randomized Quick Sort",
+            "Kager’s Algorithm",
+            "Selection sort",
+            "Bubble sort",
+            "Insertion sort",
+            "Merge sort",
+            "Quick sort",
+            "Heap sort"
+        ]
+    },
+    "maths": {
+        "calculus": {
+            "integration": [
+                "basics",
+                "trigenometry"
+            ],
+            "differenciation": [
+                "basics",
+                "trigenometry"
+            ]
+        },
+        "complex numbers": [
+            "basics",
+            "conjugates"
+        ]
+    },
+    "physics": {
+        "mechanics": [
+            "basics",
+            "momentum"
+        ],
+        "electricity": [
+            "basics"
+        ],
+        "waves": [
+            "basics"
+        ]
+    },
+    "category": {
+        "subcategory": [
+            "item1",
+            "item2"
+        ]
+    }
+}
