@@ -9,15 +9,46 @@ import { BiCaretDown } from "react-icons/bi";
 import { BiFile } from "react-icons/bi";
 import { BiFolder } from "react-icons/bi";
 import { BiFolderOpen } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
+// Latex in react stuff (npm install --save react-latex-next)
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
+// React Stuff
+import { useState } from "react";
+import { useEffect } from "react";
+
+const get_text_file = async (filepath) => {
+  // prefix public dir files with `process.env.PUBLIC_URL`
+  // see https://create-react-app.dev/docs/using-the-public-folder/
+  const res = await fetch(`${process.env.PUBLIC_URL}/${filepath}`);
+
+  // check for errors
+  if (!res.ok) {
+    throw res;
+  }
+
+  return res.text();
+};
+
+export function TextFile({ fileName }) {
+  const [text, setText] = useState(""); // init with an empty string
+
+  useEffect(() => {
+    get_text_file(`${fileName}`).then(setText).catch(console.error);
+  }, [fileName]);
+  return (
+      {text}
+  );
+}
+
+
+
+// import Data from './content/test.tex';
 
 // STATE???
-// import state from { React }
-import React, { useState } from 'react';
 
 // imports the content from the file...
-
-// Uses react-latex (search npm for documentatioin)
-var Latex = require("react-latex");
+// const data = window.open('./content/example.tex', 'r')
 
 // import Color from "./color.json";
 const colors = require("./color.json");
@@ -84,6 +115,7 @@ function TabContainer(props) {
 // function lenOfItem(n){
 //   return Object.keys(content[n]).length;
 // }
+
 
 function populateTabContainer(){
 //   // return 
@@ -172,11 +204,9 @@ function App() {
           }/> 
         </div>
         <div className="tabs-header-container">
-            <select className="cars" name="cars">
-              <option value="mth">Maths</option>
-              <option value="alg">Algorithms</option>
-              <option value="phx">Physics</option>
-            </select> 
+          <div className="circle-bg">
+            <BiSearch/>
+          </div>
           <input type="search" name="search" placeholder="search" />
         </div>
         <div id="header-container">
@@ -191,10 +221,9 @@ function App() {
           </div>
         </div>
         <div id="body-container">
-          <Latex>
-            {/* example LaTex file that would be here if shit was working \n\n $(51*414) */}
-            LaTex allows the use of mathematical symbols such as: $51 \div 4 + 5\times3$
-          </Latex>
+            <Latex>
+              
+            </Latex>
         </div>
       </div>
     </div>
