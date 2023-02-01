@@ -20,7 +20,10 @@ import { useEffect } from "react";
 const get_text_file = async (filepath) => {
   // prefix public dir files with `process.env.PUBLIC_URL`
   // see https://create-react-app.dev/docs/using-the-public-folder/
-  const res = await fetch(`${process.env.PUBLIC_URL}/${filepath}`);
+
+  // was throwing errors when I didn't import the filepath. This line is for my sanity...
+  let res = {"text":""};
+  res = await fetch(`${process.env.PUBLIC_URL}/${filepath}`);
 
   // check for errors
   if (!res.ok) {
@@ -41,8 +44,6 @@ export function TextFile({ fileName }) {
   );
 }
 
-
-
 // import Data from './content/test.tex';
 
 // STATE???
@@ -51,15 +52,15 @@ export function TextFile({ fileName }) {
 // const data = window.open('./content/example.tex', 'r')
 
 // import Color from "./color.json";
-const colors = require("./color.json");
-const content = require("./content.json")
+const config = require("./config.json");
+const data = require("./content.json")
 
 // Rips the colors from the json and applies to css respectively
 var root = document.querySelector(":root");
 
-for (let i=0; i < colors.length; i++) {
+for (let i=0; i < config.length; i++) {
   // Scans through css and sets up the css variables
-  root.style.setProperty("--"+colors[i].name, "#"+colors[i].hex)
+  root.style.setProperty("--"+config[i].name, "#"+config[i].hex)
 }
 
 // Useful ones ...
@@ -171,6 +172,34 @@ function setupFS() {
   // look for parents that are also objects, turn into a list of folders, and break those folders into an order, [first], [first/second] so that we dont run into an error if we just did [first/second]
 }
 
+// Python Equivelant
+
+// for (var p, _pj_c = 0, _pj_a = Object.keys(data), _pj_b = _pj_a.length; _pj_c < _pj_b; _pj_c += 1) {
+//   p = _pj_a[_pj_c];
+
+//   for (var i, _pj_f = 0, _pj_d = data[p], _pj_e = _pj_d.length; _pj_f < _pj_e; _pj_f += 1) {
+//     i = _pj_d[_pj_f];
+//     var dataFileList = [];
+//     try {
+//       for (var v = 0, _pj_g = data[p][i].length; v < _pj_g; v += 1) {
+//         dataFileList.append(`${p}/${i}/${data[p][i][v]}.md`);
+//       }
+//     } catch (e) {
+//       for (var v, _pj_i = 0, _pj_g = data[p][i], _pj_h = _pj_g.length; _pj_i < _pj_h; _pj_i += 1) {
+//         v = _pj_g[_pj_i];
+
+//         for (var y = 0, _pj_j = data[p][i][v].length; y < _pj_j; y += 1) {
+//           dataFileList.append(`${p}/${i}/${data[p][i][v][y]}.md`);
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
+// console.log(data['algorithms']['Backtracking algorithm'][0]);
+
 function App() {
   return (
     <div className="App">
@@ -222,7 +251,7 @@ function App() {
         </div>
         <div id="body-container">
             <Latex>
-              
+                hello
             </Latex>
         </div>
       </div>
