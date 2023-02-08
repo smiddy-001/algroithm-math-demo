@@ -30,7 +30,7 @@ def strip_recursive(x):
 data = json.loads(f.read())
 
 data = strip_recursive(data)
-print(data)
+# print(data)
 
 # print('\n----------------------------  json data into list of directiories (objects inside the content.json)   ------------------------------------\n')
 
@@ -97,17 +97,95 @@ dataFileList = []
 #             "momentum"
 #         ],
 
-for p in data.keys():
-    for i in data[p]:
-        try:
-            for v in range(len(data[p][i])):
-                dataFileList.append(f'{p}/{i}/{data[p][i][v]}.md')
-                print(f'{p}/{i}/{data[p][i][v]}.md')
-        except:
-            for v in data[p][i]:
-                for y in range(len(data[p][i][v])):
-                    dataFileList.append(f'{p}/{i}/{data[p][i][v][y]}.md')
-                    print(f'{p}/{i}/{data[p][i][v][y]}.md')
+# Take quiz now
+
+# testing_fail = {'basics': {'helloso': ['one', 'too'],
+#                            'dir2': ['two']
+#                            },
+#                 'advanced': ['gello']}
+
+# testing_succ = {'Integration': ['Basics', 'Trigenometry'],
+#                 'Differenciation': ['Basics', 'Trigenometry']}
+
+# # find depth of a dictionary
+
+
+# def dict_depth(dic, level=1):
+
+#     str_dic = str(dic)
+#     counter = 0
+#     for i in str_dic:
+#         if i == "{":
+#             counter += 1
+#     return (counter)
+
+# if the dir below current is a list then create files out of all files in list
+
+# else if the dir below is another dict then create a folder
+
+
+# def makefiles(files_as_list, location, depth=1):
+#     for i in range(len(files_as_list)):
+#         print(
+#             f'|current Depth| {current_deepness} | position in inner list | {i:<2} | location: | {location:>12}/{files_as_list[i]:<64} |')
+
+
+# current_deepness = 0
+# list_of_deepness = []
+
+# current deepness
+# level 0
+# \_____level 1
+#       \_____  level 2
+#           ___  level 2
+#                \___ level 3
+#
+# I think you get it now ...
+
+
+# def scanThroughJson(dataset, ploc=''):
+#     global current_deepness
+#     for dsloc in dataset:
+#         if isinstance(dataset[dsloc], dict):
+#             # print(f'{dsloc} | {dataset[dsloc]}')
+#             ploc += f'/{dsloc}'
+#             current_deepness += 1
+#             scanThroughJson(dataset[dsloc], ploc)
+#             list_of_deepness.append(current_deepness)
+
+#         elif isinstance(dataset[dsloc], list):
+#             makefiles(dataset[dsloc], f'{ploc}', dict_depth(dataset))
+
+
+# scanThroughJson(data)
+
+# input()
+
+
+# for p in data.keys():
+#     for i in data[p]:
+#         try:
+#             for v in range(len(data[p][i])):
+#                 # print(data[p][i])
+#                 try:
+#                     # print(v)
+#                     if v.isinstance():
+#                         break
+#                     for z in range(len(data[p][i][v])):
+#                         try:
+#                             dataFileList.append(
+#                                 f'{p}/{i}/{v}/{z}/{data[p][i][v][z]}.md')
+#                             print(f'{p}/{i}/{v}/{z}/{data[p][i][v][z]}.md')
+#                         except:
+#                             ()
+#                 except:
+#                     dataFileList.append(f'{p}/{i}/{data[p][i][v]}.md')
+#                     print(f'{p}/{i}/{data[p][i][v]}.md')
+#         except:
+#             for v in data[p][i]:
+#                 for y in range(len(data[p][i][v])):
+#                     dataFileList.append(f'{p}/{i}/{data[p][i][v][y]}.md')
+#                     print(f'{p}/{i}/{data[p][i][v][y]}.md')
 
 # when a text item is 4 deep, problems occur... folders create on same directory level as its child :(
 print('\nbug on line 111 :(')
@@ -175,7 +253,7 @@ if (makeDirectories == "a"):
         if dataFolderList[n] != 0:
             path = os.path.join(PARENT_DIRECTORY, dataFolderList[n])
         else:
-            print("something went wrong on line 146... :(")
+            print("something went wrong on line 176... :(")
         try:
             os.mkdir(path)
         except:
